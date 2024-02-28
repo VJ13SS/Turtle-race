@@ -1,5 +1,6 @@
 '''Hey all ...The following is a simple python program which deals with the concept of turtle race..The code mainly uses turtle module and its basic functions thus gives an understanding of the respected module and its operations..
 I do recommend to revise your concept of graphs in mathematics before starting this project
+Challenge...Here i have defined the track function but while executing it there  have some uncertainity try to fix it...
 Hope you will give a good time while dealing with this...'''
 
 #Importing necessary modules
@@ -68,7 +69,7 @@ def finish_line():#Draw the finish line
 def racing_turtles(count):
 	
 	turtle_list = []
-	colors = ["black", "red", "green", "blue", "yellow", "orange", "purple", "pink", "brown", "cyan", "magenta", "gray", "lightgray", "darkgray"]
+	colors = ["black", "red", "green", "blue", "orange", "purple", "pink", "brown", "cyan", "magenta", "gray", "lightgray", "darkgray"]
 	
 	#n turtles means n+1 spaces(Count the number of spaces between the turtles and between the turtle and the border)
 	x_spacing = WIDTH//(count+1)
@@ -79,7 +80,7 @@ def racing_turtles(count):
 		new_turtle.color(colors[i])
 		new_turtle.left(90)
 		new_turtle.penup()
-		new_turtle.goto(((-WIDTH//2) + (x_spacing * i)),-HEIGHT//2)
+		new_turtle.goto(((-WIDTH//2)-5+ (x_spacing * i)),-HEIGHT//2)
 		turtle_list.append(new_turtle)
 	
 	return turtle_list	
@@ -96,7 +97,6 @@ def race():
 	#count = turtle_count()
 	count = 5
 	ground()#Draw the ground
-	track(count)#Draw the track
 	finish_line()#Draw the finish line
 	list = racing_turtles(count)#Getting the Racing turtles
 	
@@ -104,6 +104,7 @@ def race():
 	while flag == 0:
 		for i in list:
 			range = random.randrange(2,10)
+			i.pendown()
 			i.forward(range)
 			if i.ycor() >= (HEIGHT//2)- 20:
 				win = i.pencolor().title()
